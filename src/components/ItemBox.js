@@ -15,7 +15,7 @@ export default class ItemBox extends Component {
     return (
       <div
         className="ItemBox"
-        style={{ width: calc.width, height: calc.height }}
+        style={{ width: calc.width - 4, height: calc.height - 4 }}
       />
     );
   }

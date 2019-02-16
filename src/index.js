@@ -7,11 +7,8 @@ import Fortmatic from "fortmatic";
 import Web3 from "web3";
 import { BrowserRouter } from "react-router-dom";
 
-if (module.hot) {
-  module.hot.accept(function() {
-    location.reload();
-  });
-}
+const contractAddress = "0xc7e26b798104f07de41ed208e8a8cd5ba84fc1b1";
+const contractAbi = require("./utils/abi.json");
 
 const fm = new Fortmatic("pk_test_7A6DD1EB8EE45B75");
 
@@ -29,6 +26,7 @@ if (window.web3.currentProvider.enable)
 else if (window.ethereum.enable) window.ethereum.enable().then(console.log);
 
 if (window.web3) {
+  window.GTS = new web3.eth.Contract(contractAbi, contractAddress);
   ReactDOM.render(
     <BrowserRouter>
       <App />
