@@ -17,8 +17,9 @@ if (window.ethereum) {
   window.web3 = new Web3(fm.getProvider());
 }
 
-if (window.web3.currentProvider.enable) window.web3.currentProvider.enable();
-if (window.ethereum.enable) window.ethereum.enable();
+if (window.web3.currentProvider.enable)
+  window.web3.currentProvider.enable().then(alert);
+else if (window.ethereum.enable) window.ethereum.enable().then(console.log);
 
 if (window.web3) {
   ReactDOM.render(<App />, document.getElementById("root"));
