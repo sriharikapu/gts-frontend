@@ -7,7 +7,7 @@ import Fortmatic from "fortmatic";
 import Web3 from "web3";
 import { BrowserRouter } from "react-router-dom";
 
-const contractAddress = "0xc7e26b798104f07de41ed208e8a8cd5ba84fc1b1";
+const contractAddress = "0x9a5130bc117c2e58be19d9246ae87487d9685c79";
 const contractAbi = require("./utils/abi.json");
 
 const fm = new Fortmatic("pk_test_7A6DD1EB8EE45B75");

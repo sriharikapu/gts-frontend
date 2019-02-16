@@ -21,8 +21,10 @@ export default class ItemBox extends Component {
       >
         {this.state.data ? (
           <div style={{ wordBreak: "break-all", fontSize: 8 }}>
-            <Blockie seed={this.state.emitter} size={4} />
-            {this.state.data}
+            <div>
+              <Blockie seed={this.state.emitter} scale={2} />
+            </div>
+            <div>{this.state.data}</div>
           </div>
         ) : (
           "Loading..."
