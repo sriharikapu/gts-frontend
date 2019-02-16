@@ -21,6 +21,7 @@ export default class SettingsView extends Component {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Trade link</Form.Label>
             <Form.Control
+              readOnly
               value={"http://localhost/trade/" + this.state.address}
             />
           </Form.Group>
