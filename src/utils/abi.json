@@ -2,25 +2,24 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "getMyOffers",
+    "outputs": [{ "name": "", "type": "uint256[]" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "getMyInventory",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256[]"
-      }
-    ],
+    "outputs": [{ "name": "", "type": "uint256[]" }],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": false,
-    "inputs": [
-      {
-        "name": "_id",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{ "name": "_id", "type": "uint256" }],
     "name": "burn",
     "outputs": [],
     "payable": false,
@@ -29,61 +28,25 @@
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "name": "user",
-        "type": "address"
-      }
-    ],
+    "inputs": [{ "name": "user", "type": "address" }],
     "name": "getUserInventory",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256[]"
-      }
-    ],
+    "outputs": [{ "name": "", "type": "uint256[]" }],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "name": "_id",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{ "name": "_id", "type": "uint256" }],
     "name": "getTradeOffer",
     "outputs": [
-      {
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "name": "recipient",
-        "type": "address"
-      },
-      {
-        "name": "my_assets_emitters",
-        "type": "address[]"
-      },
-      {
-        "name": "my_assets_data",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "their_assets_emitters",
-        "type": "address[]"
-      },
-      {
-        "name": "their_assets_data",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "state",
-        "type": "uint8"
-      }
+      { "name": "sender", "type": "address" },
+      { "name": "recipient", "type": "address" },
+      { "name": "my_assets_emitters", "type": "address[]" },
+      { "name": "my_assets_data", "type": "bytes32[]" },
+      { "name": "their_assets_emitters", "type": "address[]" },
+      { "name": "their_assets_data", "type": "bytes32[]" },
+      { "name": "state", "type": "uint8" }
     ],
     "payable": false,
     "stateMutability": "view",
@@ -91,12 +54,7 @@
   },
   {
     "constant": false,
-    "inputs": [
-      {
-        "name": "offer_id",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{ "name": "offer_id", "type": "uint256" }],
     "name": "cancelTradeOffer",
     "outputs": [],
     "payable": false,
@@ -106,14 +64,8 @@
   {
     "constant": false,
     "inputs": [
-      {
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "name": "_data",
-        "type": "bytes32"
-      }
+      { "name": "_owner", "type": "address" },
+      { "name": "_data", "type": "bytes32" }
     ],
     "name": "assign",
     "outputs": [],
@@ -124,60 +76,26 @@
   {
     "constant": false,
     "inputs": [
-      {
-        "name": "_partner",
-        "type": "address"
-      },
-      {
-        "name": "_my_assets_emitters",
-        "type": "address[]"
-      },
-      {
-        "name": "_my_assets_data",
-        "type": "bytes32[]"
-      },
-      {
-        "name": "_their_assets_emitters",
-        "type": "address[]"
-      },
-      {
-        "name": "_their_assets_data",
-        "type": "bytes32[]"
-      }
+      { "name": "_partner", "type": "address" },
+      { "name": "_my_assets_emitters", "type": "address[]" },
+      { "name": "_my_assets_data", "type": "bytes32[]" },
+      { "name": "_their_assets_emitters", "type": "address[]" },
+      { "name": "_their_assets_data", "type": "bytes32[]" }
     ],
     "name": "sendTradeOffer",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "outputs": [{ "name": "", "type": "uint256" }],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "name": "_id",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{ "name": "_id", "type": "uint256" }],
     "name": "getAsset",
     "outputs": [
-      {
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "name": "emitter",
-        "type": "address"
-      },
-      {
-        "name": "data",
-        "type": "bytes32"
-      }
+      { "name": "owner", "type": "address" },
+      { "name": "emitter", "type": "address" },
+      { "name": "data", "type": "bytes32" }
     ],
     "payable": false,
     "stateMutability": "view",
@@ -186,22 +104,10 @@
   {
     "constant": false,
     "inputs": [
-      {
-        "name": "_maker",
-        "type": "uint256"
-      },
-      {
-        "name": "_maker_assets",
-        "type": "uint256[]"
-      },
-      {
-        "name": "_taker",
-        "type": "uint256"
-      },
-      {
-        "name": "_taker_assets",
-        "type": "uint256[]"
-      }
+      { "name": "_maker", "type": "uint256" },
+      { "name": "_maker_assets", "type": "uint256[]" },
+      { "name": "_taker", "type": "uint256" },
+      { "name": "_taker_assets", "type": "uint256[]" }
     ],
     "name": "takeTradeOffer",
     "outputs": [],
@@ -212,60 +118,26 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "emitter",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "data",
-        "type": "bytes32"
-      }
+      { "indexed": false, "name": "id", "type": "uint256" },
+      { "indexed": false, "name": "owner", "type": "address" },
+      { "indexed": false, "name": "emitter", "type": "address" },
+      { "indexed": false, "name": "data", "type": "bytes32" }
     ],
     "name": "AssetAssign",
     "type": "event"
   },
   {
     "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "name": "id",
-        "type": "uint256"
-      }
-    ],
+    "inputs": [{ "indexed": false, "name": "id", "type": "uint256" }],
     "name": "AssetBurn",
     "type": "event"
   },
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "from",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "to",
-        "type": "address"
-      }
+      { "indexed": false, "name": "id", "type": "uint256" },
+      { "indexed": false, "name": "from", "type": "address" },
+      { "indexed": false, "name": "to", "type": "address" }
     ],
     "name": "AssetMove",
     "type": "event"
@@ -273,41 +145,17 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": true,
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "name": "receiver",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "name": "my_assets_emitters",
-        "type": "address[]"
-      },
-      {
-        "indexed": false,
-        "name": "my_assets_data",
-        "type": "bytes32[]"
-      },
+      { "indexed": false, "name": "id", "type": "uint256" },
+      { "indexed": true, "name": "sender", "type": "address" },
+      { "indexed": true, "name": "receiver", "type": "address" },
+      { "indexed": false, "name": "my_assets_emitters", "type": "address[]" },
+      { "indexed": false, "name": "my_assets_data", "type": "bytes32[]" },
       {
         "indexed": false,
         "name": "their_assets_emitters",
         "type": "address[]"
       },
-      {
-        "indexed": false,
-        "name": "their_assets_data",
-        "type": "bytes32[]"
-      }
+      { "indexed": false, "name": "their_assets_data", "type": "bytes32[]" }
     ],
     "name": "TradeOfferSend",
     "type": "event"
@@ -315,16 +163,8 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": true,
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "name": "state",
-        "type": "uint8"
-      }
+      { "indexed": true, "name": "id", "type": "uint256" },
+      { "indexed": false, "name": "state", "type": "uint8" }
     ],
     "name": "TradeOfferModify",
     "type": "event"

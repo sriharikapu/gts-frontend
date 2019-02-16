@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Blockie from "react-blockies";
+
 import "./ItemBox.css";
 
 export default class ItemBox extends Component {
@@ -16,24 +18,33 @@ export default class ItemBox extends Component {
       <div
         className="ItemBox"
         style={{ width: calc.width - 4, height: calc.height - 4 }}
-      />
+      >
+        {this.state.data ? (
+          <div style={{ wordBreak: "break-all", fontSize: 8 }}>
+            <div>
+              <Blockie seed={this.state.emitter} scale={2} />
+            </div>
+            <div>{this.state.data}</div>
+          </div>
+        ) : (
+          "Loading..."
+        )}
+      </div>
     );
   }
   calculateSize() {
-    const { width, height } = this.state;
-    const calculated = Math.ceil(width / 100);
-    return { width: width / calculated, height: width / calculated };
+    const calculated = Math.ceil(this.props.containerWidth / 100);
+    return {
+      width: this.props.containerWidth / calculated,
+      height: this.props.containerWidth / calculated
+    };
   }
-  updateDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-  }
-  componentWillMount() {
-    this.updateDimensions();
-  }
-  componentDidMount() {
-    window.addEventListener("resize", () => this.updateDimensions());
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", () => this.updateDimensions());
+  async componentWillMount() {
+    const data = await GTS.methods.getAsset(this.props.id).call();
+    this.setState({
+      owner: data.owner,
+      emitter: data.emitter,
+      data: data.data
+    });
   }
 }
