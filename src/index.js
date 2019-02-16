@@ -5,6 +5,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import Fortmatic from "fortmatic";
 import Web3 from "web3";
+import { BrowserRouter } from "react-router-dom";
+
+if (module.hot) {
+  module.hot.accept(function() {
+    location.reload();
+  });
+}
 
 const fm = new Fortmatic("pk_test_7A6DD1EB8EE45B75");
 
@@ -22,7 +29,12 @@ if (window.web3.currentProvider.enable)
 else if (window.ethereum.enable) window.ethereum.enable().then(console.log);
 
 if (window.web3) {
-  ReactDOM.render(<App />, document.getElementById("root"));
+  ReactDOM.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    document.getElementById("root")
+  );
 }
 
 // If you want your app to work offline and load faster, you can change
