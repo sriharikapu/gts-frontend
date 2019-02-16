@@ -15,7 +15,7 @@ export default class Header extends Component {
             <Nav.Link>Offers</Nav.Link>
             <Nav.Link>Inventory</Nav.Link>
             <Nav.Link>Settings</Nav.Link>
-            <NavbarDivider />
+            <NavbarDivider show="sm" />
             <NavDropdown
               title={<NavProfile />}
               id="basic-nav-dropdown"
