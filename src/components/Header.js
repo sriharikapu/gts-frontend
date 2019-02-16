@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import NavProfile from ".//NavProfile";
 import NavbarDivider from "./NavbarDivider";
+import { Link } from "react-router-dom";
 
 export default class Header extends Component {
   render() {
@@ -12,9 +13,15 @@ export default class Header extends Component {
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="ml-auto" navbar>
-            <Nav.Link>Offers</Nav.Link>
-            <Nav.Link>Inventory</Nav.Link>
-            <Nav.Link>Settings</Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Inventory
+            </Nav.Link>
+            <Nav.Link as={Link} to="/offers">
+              Offers
+            </Nav.Link>
+            <Nav.Link as={Link} to="/settings">
+              Settings
+            </Nav.Link>
             <NavbarDivider show="sm" />
             <NavDropdown
               title={<NavProfile />}
