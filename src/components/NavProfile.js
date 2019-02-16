@@ -17,8 +17,9 @@ export default class NavProfile extends Component {
   render() {
     return (
       <span>
-        <Blockie seed={this.state.address} className="NavProfile-blockie" />
-        {this.state.address}
+        {this.state.address && (
+          <Blockie seed={this.state.address} className="NavProfile-blockie" />
+        )}
       </span>
     );
   }
