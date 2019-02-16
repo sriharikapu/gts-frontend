@@ -24,7 +24,13 @@ export default class SettingsView extends Component {
               <Form.Control
                 readOnly
                 ref={text => (this.tradeLink = text)}
-                value={"http://localhost/trade/" + this.state.address}
+                value={
+                  location.protocol +
+                  "//" +
+                  location.host +
+                  "/trade/" +
+                  this.state.address
+                }
               />
               <InputGroup.Append>
                 <Button

@@ -4,6 +4,6 @@ import "./OfferBox.css";
 
 export default class OfferBox extends Component {
   render() {
-    return <div className="OfferBox">OfferBox</div>;
+    return <div className="OfferBox">{this.props.id}</div>;
   }
 }

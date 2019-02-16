@@ -8,6 +8,7 @@ import { Switch, Route } from "react-router-dom";
 import InventoryView from "./views/InventoryView";
 import OffersView from "./views/OffersView";
 import SettingsView from "./views/SettingsView";
+import NewTradeView from "./views/NewTradeView";
 
 class App extends Component {
   render() {
@@ -18,6 +19,8 @@ class App extends Component {
           <Route exact path="/" component={InventoryView} />
           <Route path="/offers" component={OffersView} />
           <Route path="/settings" component={SettingsView} />
+          <Route path="/trade" component={NewTradeView} />
+          <Route path="/trade/:address" component={NewTradeView} />
         </Switch>
       </div>
     );

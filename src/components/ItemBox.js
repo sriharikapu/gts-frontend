@@ -23,6 +23,9 @@ export default class ItemBox extends Component {
           <div style={{ wordBreak: "break-all", fontSize: 8 }}>
             <div>
               <Blockie seed={this.state.emitter} scale={2} />
+              <span style={{ marginLeft: 4, fontSize: 8 }}>
+                #{this.props.id}
+              </span>
             </div>
             <div>{this.state.data}</div>
           </div>

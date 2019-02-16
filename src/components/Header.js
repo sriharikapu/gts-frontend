@@ -9,7 +9,9 @@ export default class Header extends Component {
   render() {
     return (
       <Navbar expand="sm" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Global Trade System</Navbar.Brand>
+        <Navbar.Brand to="/" as={Link}>
+          Global Trade System
+        </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="ml-auto" navbar>
