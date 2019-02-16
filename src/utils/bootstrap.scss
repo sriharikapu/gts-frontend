@@ -1,2 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
+$navbar-padding-y: $spacer;
+
+.navbar-nav .nav-link {
+    line-height: 32px;
+}

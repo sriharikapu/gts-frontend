@@ -1,0 +1,7 @@
+.NavbarDivider {
+  height: 48px;
+  background: #000;
+  width: 1px;
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}

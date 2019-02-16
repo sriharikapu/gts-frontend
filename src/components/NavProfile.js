@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 
+import Blockie from "react-blockies";
+
+import "./NavProfile.css";
+
 export default class NavProfile extends Component {
     render() {
-        return "0x0xC79a5808Ede2DE4e1154235742f6266Dd5e48982";
+        return <span><Blockie seed={window.web3.eth.defaultAccount} className="NavProfile-blockie" />{window.web3.eth.defaultAccount}</span>;
     }
 }
