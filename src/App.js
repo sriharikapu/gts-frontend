@@ -19,7 +19,7 @@ class App extends Component {
           <Route exact path="/" component={InventoryView} />
           <Route path="/offers" component={OffersView} />
           <Route path="/settings" component={SettingsView} />
-          <Route path="/trade" component={NewTradeView} />
+          <Route exact path="/trade" component={NewTradeView} />
           <Route path="/trade/:address" component={NewTradeView} />
         </Switch>
       </div>
