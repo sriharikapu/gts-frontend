@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Container, Form } from "react-bootstrap";
+import { Container, Form, InputGroup, Button } from "react-bootstrap";
 
 export default class SettingsView extends Component {
   constructor(props) {
@@ -20,10 +20,26 @@ export default class SettingsView extends Component {
         <Container className="mt-2">
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Trade link</Form.Label>
-            <Form.Control
-              readOnly
-              value={"http://localhost/trade/" + this.state.address}
-            />
+            <InputGroup className="mb-3">
+              <Form.Control
+                readOnly
+                ref={text => (this.tradeLink = text)}
+                value={"http://localhost/trade/" + this.state.address}
+              />
+              <InputGroup.Append>
+                <Button
+                  variant="secondary"
+                  onClick={e => {
+                    console.log(e);
+                    this.tradeLink.select();
+                    document.execCommand("copy");
+                    e.target.focus();
+                  }}
+                >
+                  Copy
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
           </Form.Group>
         </Container>
       </div>
