@@ -31,26 +31,18 @@ export default class ItemBox extends Component {
     );
   }
   calculateSize() {
-    const { width, height } = this.state;
-    const calculated = Math.ceil(width / 100);
-    return { width: width / calculated, height: width / calculated };
-  }
-  updateDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    const calculated = Math.ceil(this.props.containerWidth / 100);
+    return {
+      width: this.props.containerWidth / calculated,
+      height: this.props.containerWidth / calculated
+    };
   }
   async componentWillMount() {
-    this.updateDimensions();
     const data = await GTS.methods.getAsset(this.props.id).call();
     this.setState({
       owner: data.owner,
       emitter: data.emitter,
       data: data.data
     });
-  }
-  componentDidMount() {
-    window.addEventListener("resize", () => this.updateDimensions());
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", () => this.updateDimensions());
   }
 }
