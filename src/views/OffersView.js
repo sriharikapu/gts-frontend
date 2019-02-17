@@ -15,10 +15,14 @@ export default class OffersView extends Component {
   async refresh() {
     this.setState({ offers: null });
     const account = (await window.web3.eth.getAccounts())[0];
+    const receivedOffers = (await GTS.methods
+      .getMyReceivedTradeOffers()
+      .call({ from: account })).map(i => ({ id: i, received: true }));
+    const sentOffers = (await GTS.methods
+      .getMySentTradeOffers()
+      .call({ from: account })).map(i => ({ id: i, received: false }));
     this.setState({
-      offers: (await GTS.methods
-        .getMyReceivedTradeOffers()
-        .call({ from: account, gasLimit: 10000000 })).sort((a, b) => b - a)
+      offers: [...receivedOffers, ...sentOffers].sort((a, b) => b.id - a.id)
     });
   }
 
@@ -54,7 +58,8 @@ export default class OffersView extends Component {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Sender</th>
+                  <th>Type</th>
+                  <th>Partner</th>
                   <th>My assets</th>
                   <th>Their assets</th>
                   <th>State</th>
@@ -63,7 +68,9 @@ export default class OffersView extends Component {
               </thead>
               <tbody>
                 {this.state.offers &&
-                  this.state.offers.map(i => <OfferBox key={i} id={i} />)}
+                  this.state.offers.map(i => (
+                    <OfferBox received={i.received} key={i.id} id={i.id} />
+                  ))}
               </tbody>
             </Table>
           </div>

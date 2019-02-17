@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "./OfferBox.css";
 import ItemBox from "./ItemBox";
+import { Button } from "react-bootstrap";
 
 export default class OfferBox extends Component {
   constructor(props) {
@@ -33,24 +34,49 @@ export default class OfferBox extends Component {
     return (
       <tr>
         <td>{this.props.id}</td>
-        <td>{sender}</td>
+        <td>{this.props.received ? "RECEIVED" : "SENT"}</td>
+        <td>{this.props.received ? sender : recipient}</td>
         <td>
-          {my_assets.map(i => (
+          {(this.props.received ? their_assets : my_assets).map(i => (
             <ItemBox key={i} id={i} />
           ))}
         </td>
         <td>
-          {their_assets.map(i => (
+          {(this.props.received ? my_assets : their_assets).map(i => (
             <ItemBox key={i} id={i} />
           ))}
         </td>
         <td>{OfferBox.stateToString(state)}</td>
-        <td>-</td>
+        <td>{this.renderActions()}</td>
       </tr>
     );
   }
   renderLoading() {
     return <div className="OfferBox">Loading...</div>;
+  }
+  renderActions() {
+    if (parseInt(this.state.state, 10) !== 0) {
+      return "-";
+    }
+
+    if (this.props.received) {
+      return (
+        <span>
+          <Button className="d-inline" variant="success">
+            Accept
+          </Button>{" "}
+          <Button className="d-inline" variant="danger">
+            Decline
+          </Button>
+        </span>
+      );
+    } else {
+      return (
+        <div>
+          <Button variant="danger">Cancel</Button>
+        </div>
+      );
+    }
   }
   static stateToString(state) {
     switch (parseInt(state, 10)) {
