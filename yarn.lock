@@ -5547,6 +5547,11 @@ swarm-js@^0.1.39:
     tar "^4.0.2"
     xhr-request-promise "^0.1.2"
 
+sweetalert2@^8.0.7:
+  version "8.0.7"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-8.0.7.tgz#c8208ac4d45906f620aca38c0c3f6734b9c34b66"
+  integrity sha512-UrCfHuz48XxIBef07rA3Mu536qWYjdMom3Yfc4tqO7pzNyoarNFWypflZv3AnaYNRGAege5giRrh//R3RmY2Hw==
+
 tar-stream@^1.5.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/tar-stream/-/tar-stream-1.6.2.tgz#8ea55dab37972253d9a9af90fdcd559ae435c555"
