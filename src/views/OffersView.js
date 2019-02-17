@@ -27,13 +27,13 @@ export default class OffersView extends Component {
       <div className="OffersView">
         <Container className="pt-2">
           <div>
-            <Button variant="success" onClick={() => this.refresh()}>
+            <Button variant="primary" onClick={() => this.refresh()}>
               Refresh
             </Button>
             {React.createElement(
               withRouter(({ history }) => (
                 <Button
-                  variant="primary"
+                  variant="success"
                   className="ml-2"
                   onClick={() => history.push("/trade")}
                 >
