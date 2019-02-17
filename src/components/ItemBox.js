@@ -37,6 +37,7 @@ export default class ItemBox extends Component {
     );
   }
   calculateSize() {
+    if (!this.props.containerWidth) return { width: 100, height: 100 };
     const calculated = Math.ceil(this.props.containerWidth / 100);
     return {
       width: this.props.containerWidth / calculated,
