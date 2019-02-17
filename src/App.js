@@ -9,6 +9,7 @@ import InventoryView from "./views/InventoryView";
 import OffersView from "./views/OffersView";
 import SettingsView from "./views/SettingsView";
 import NewTradeView from "./views/NewTradeView";
+import DeveloperView from "./views/DeveloperView";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path="/settings" component={SettingsView} />
           <Route exact path="/trade" component={NewTradeView} />
           <Route path="/trade/:address" component={NewTradeView} />
+          <Route exact path="/developer" component={DeveloperView} />
         </Switch>
       </div>
     );

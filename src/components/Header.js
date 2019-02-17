@@ -6,6 +6,15 @@ import NavbarDivider from "./NavbarDivider";
 import { Link } from "react-router-dom";
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      address: null
+    };
+  }
+  async componentDidMount() {
+    this.setState({ address: (await window.web3.eth.getAccounts())[0] });
+  }
   render() {
     return (
       <Navbar expand="sm" bg="dark" variant="dark">
@@ -30,14 +39,10 @@ export default class Header extends Component {
               id="basic-nav-dropdown"
               alignRight={true}
             >
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Header>{this.state.address}</NavDropdown.Header>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item as={Link} to="/developer">
+                Developer
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
