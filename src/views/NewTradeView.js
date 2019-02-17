@@ -86,7 +86,7 @@ export default class OffersView extends Component {
                     </Button>
                   </InputGroup.Append>
                 </InputGroup>
-                <div>
+                <div className="mt-2">
                   <Inventory
                     items={this.state.myAssets}
                     selectable={true}
@@ -124,7 +124,7 @@ export default class OffersView extends Component {
                     </Button>
                   </InputGroup.Append>
                 </InputGroup>
-                <div>
+                <div className="mt-2">
                   <Inventory
                     items={this.state.partnerAssets}
                     selectable={true}
