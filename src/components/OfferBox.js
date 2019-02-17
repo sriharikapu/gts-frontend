@@ -100,7 +100,7 @@ export default class OfferBox extends Component {
           <Button
             onClick={() => {
               Swal.fire({
-                title: "Decline trade offer...",
+                title: "Declining trade offer...",
                 showCancelButton: false,
                 showConfirmButton: false,
                 onBeforeOpen: () => {
