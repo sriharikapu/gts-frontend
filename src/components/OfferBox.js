@@ -31,16 +31,22 @@ export default class OfferBox extends Component {
     const { sender, recipient, my_assets, their_assets, state } = this.state;
     console.log(this.state);
     return (
-      <div className="OfferBox">
-        {sender}{" "}
-        {my_assets.map(i => (
-          <ItemBox key={i} id={i} />
-        ))}{" "}
-        {their_assets.map(i => (
-          <ItemBox key={i} id={i} />
-        ))}{" "}
-        {OfferBox.stateToString(state)}
-      </div>
+      <tr>
+        <td>{this.props.id}</td>
+        <td>{sender}</td>
+        <td>
+          {my_assets.map(i => (
+            <ItemBox key={i} id={i} />
+          ))}
+        </td>
+        <td>
+          {their_assets.map(i => (
+            <ItemBox key={i} id={i} />
+          ))}
+        </td>
+        <td>{OfferBox.stateToString(state)}</td>
+        <td>-</td>
+      </tr>
     );
   }
   renderLoading() {

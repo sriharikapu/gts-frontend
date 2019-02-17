@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Table } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import OfferBox from "../components/OfferBox";
 
@@ -16,9 +16,9 @@ export default class OffersView extends Component {
     this.setState({ offers: null });
     const account = (await window.web3.eth.getAccounts())[0];
     this.setState({
-      offers: await GTS.methods
+      offers: (await GTS.methods
         .getMyReceivedTradeOffers()
-        .call({ from: account, gasLimit: 10000000 })
+        .call({ from: account, gasLimit: 10000000 })).sort((a, b) => b - a)
     });
   }
 
@@ -37,7 +37,7 @@ export default class OffersView extends Component {
                   className="ml-2"
                   onClick={() => history.push("/trade")}
                 >
-                  New offer
+                  New trade
                 </Button>
               ))
             )}
@@ -50,8 +50,22 @@ export default class OffersView extends Component {
             )}
           </div>
           <div>
-            {this.state.offers &&
-              this.state.offers.map(i => <OfferBox key={i} id={i} />)}
+            <Table striped bordered className="mt-2" variant="dark">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Sender</th>
+                  <th>My assets</th>
+                  <th>Their assets</th>
+                  <th>State</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.offers &&
+                  this.state.offers.map(i => <OfferBox key={i} id={i} />)}
+              </tbody>
+            </Table>
           </div>
         </Container>
       </div>
