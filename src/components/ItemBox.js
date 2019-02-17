@@ -16,8 +16,9 @@ export default class ItemBox extends Component {
     const calc = this.calculateSize();
     return (
       <div
-        className="ItemBox"
+        className={"ItemBox" + (this.props.selected ? " ItemBox-selected" : "")}
         style={{ width: calc.width - 4, height: calc.height - 4 }}
+        onClick={() => this.props.onClick()}
       >
         {this.state.data ? (
           <div style={{ wordBreak: "break-all", fontSize: 8 }}>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ItemBox from "../components/ItemBox";
+import Inventory from "../components/Inventory";
 import "./InventoryView.css";
 import { Container, Button, Form } from "react-bootstrap";
 
@@ -59,16 +59,7 @@ export default class InventoryView extends Component {
             </div>
                   )*/}
           <div className="mt-2 mb-2">
-            <ContainerDimensions>
-              {({ width }) => (
-                <div>
-                  {this.state.items &&
-                    this.state.items.map(i => (
-                      <ItemBox key={i} id={i} containerWidth={width} />
-                    ))}
-                </div>
-              )}
-            </ContainerDimensions>
+            <Inventory items={this.state.items} />
           </div>
         </Container>
       </div>

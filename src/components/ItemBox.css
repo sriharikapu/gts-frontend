@@ -7,3 +7,7 @@
   margin: 2px;
   cursor: pointer;
 }
+
+.ItemBox-selected {
+  border: 1px solid gold;
+}

@@ -8,7 +8,10 @@ import {
   InputGroup
 } from "react-bootstrap";
 
+import ItemBox from "../components/ItemBox";
+
 import { withRouter } from "react-router-dom";
+import Inventory from "../components/Inventory";
 export default class OffersView extends Component {
   constructor(props) {
     super(props);
@@ -19,13 +22,37 @@ export default class OffersView extends Component {
         : "",
       newPartnerAddress: this.props.match.params.address
         ? this.props.match.params.address
-        : ""
+        : "",
+      selected: []
     };
   }
-  componentWillMount() {
-    web3.eth
+  async componentWillMount() {
+    await web3.eth
       .getAccounts()
       .then(accounts => this.setState({ myAddress: accounts[0] }));
+
+    this.refreshMyInventory();
+    this.refreshPartnerInventory();
+  }
+  async refreshMyInventory() {
+    this.setState({ myAssets: null, mySelected: [] });
+    const account = (await window.web3.eth.getAccounts())[0];
+    this.setState({
+      myAssets: await GTS.methods
+        .getMyInventory()
+        .call({ from: account, gasLimit: 10000000 })
+    });
+  }
+  async refreshPartnerInventory() {
+    this.setState({ partnerAssets: null, partnerSelected: [] });
+    const account = (await window.web3.eth.getAccounts())[0];
+    if (this.state.partnerAddress === "")
+      return this.setState({ partnerAssets: [] });
+    this.setState({
+      partnerAssets: await GTS.methods
+        .getUserInventory(this.state.partnerAddress)
+        .call({ from: account, gasLimit: 10000000 })
+    });
   }
   render() {
     return (
@@ -51,9 +78,22 @@ export default class OffersView extends Component {
               <InputGroup>
                 <FormControl disabled value={this.state.myAddress} readOnly />
                 <InputGroup.Append>
-                  <Button variant="secondary">Refresh</Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() => this.refreshMyInventory()}
+                  >
+                    Refresh
+                  </Button>
                 </InputGroup.Append>
               </InputGroup>
+              <div>
+                <Inventory
+                  items={this.state.myAssets}
+                  selectable={true}
+                  onSelect={i => this.toggleMySelection(i)}
+                  selected={this.state.mySelected}
+                />
+              </div>
             </Col>
             <Col md="6">
               <InputGroup>
@@ -74,9 +114,14 @@ export default class OffersView extends Component {
                           history.push(
                             "/trade/" + this.state.newPartnerAddress
                           );
-                          this.setState({
-                            partnerAddress: this.state.newPartnerAddress
-                          });
+                          this.setState(
+                            {
+                              partnerAddress: this.state.newPartnerAddress
+                            },
+                            () => {
+                              this.refreshPartnerInventory();
+                            }
+                          );
                         }}
                       >
                         Load
@@ -85,11 +130,30 @@ export default class OffersView extends Component {
                   )}
                 </InputGroup.Append>
               </InputGroup>
-              <div />
+              <div>
+                <Inventory
+                  items={this.state.partnerAssets}
+                  selectable={true}
+                  onSelect={i => this.togglePartnerSelection(i)}
+                  selected={this.state.partnerSelected}
+                />
+              </div>
             </Col>
           </Row>
         </Container>
       </div>
     );
+  }
+  toggleMySelection(i) {
+    let newSelected = [...this.state.mySelected];
+    if (newSelected.indexOf(i) === -1) newSelected.push(i);
+    else newSelected.splice(newSelected.indexOf(i), 1);
+    this.setState({ mySelected: newSelected });
+  }
+  togglePartnerSelection(i) {
+    let newSelected = [...this.state.partnerSelected];
+    if (newSelected.indexOf(i) === -1) newSelected.push(i);
+    else newSelected.splice(newSelected.indexOf(i), 1);
+    this.setState({ partnerSelected: newSelected });
   }
 }
