@@ -15,6 +15,7 @@ export default class ProfileView extends Component {
       .then(accounts => this.setState({ address: accounts[0] }));
   }
   render() {
+    if (!this.state.address) return <div className="ProfileView" />;
     return (
       <div className="ProfileView">
         <Container className="mt-2">
@@ -30,7 +31,6 @@ export default class ProfileView extends Component {
                 <Button
                   variant="secondary"
                   onClick={e => {
-                    console.log(e);
                     this.userId.select();
                     document.execCommand("copy");
                     e.target.focus();
