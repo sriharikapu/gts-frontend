@@ -54,7 +54,7 @@ export default class OffersView extends Component {
             )}
           </div>
           <div>
-            <Table striped bordered className="mt-2" variant="dark">
+            <Table striped bordered className="mt-2">
               <thead>
                 <tr>
                   <th>#</th>

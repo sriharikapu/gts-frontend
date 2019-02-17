@@ -1,12 +1,14 @@
 .ItemBox {
   width: 100px;
   height: 100px;
-  background: #292929;
-  border: 1px solid #333333;
+  background: #e9ecef;
+  border: 1px solid #666666;
   display: inline-block;
   margin: 2px;
   cursor: pointer;
   vertical-align: middle;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
 }
 
 .ItemBox-selected {

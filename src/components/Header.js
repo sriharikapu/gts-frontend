@@ -17,7 +17,7 @@ export default class Header extends Component {
   }
   render() {
     return (
-      <Navbar expand="sm" bg="dark" variant="dark">
+      <Navbar expand="sm" variant="dark" bg={"dark"}>
         <Navbar.Brand to="/" as={Link}>
           Global Trade System
         </Navbar.Brand>

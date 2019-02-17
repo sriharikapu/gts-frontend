@@ -7,9 +7,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100%;
-  background-color: #1b2836 !important;
-  color: white !important;
 }
 
 code {
