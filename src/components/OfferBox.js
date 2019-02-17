@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./OfferBox.css";
 import ItemBox from "./ItemBox";
 import { Button } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 export default class OfferBox extends Component {
   constructor(props) {
@@ -62,10 +63,72 @@ export default class OfferBox extends Component {
     if (this.props.received) {
       return (
         <span>
-          <Button className="d-inline" variant="success">
+          <Button
+            onClick={() => {
+              Swal.fire({
+                title: "Accepting trade offer...",
+                showCancelButton: false,
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading();
+                }
+              });
+              GTS.methods
+                .acceptTradeOffer(this.props.id)
+                .send({ from: this.state.sender })
+                .on("transactionHash", () => {
+                  Swal.fire({
+                    title: "Offer accepted!",
+                    text:
+                      "However, Ethereum network may need some time to reflect the acceptation.",
+                    type: "success"
+                  });
+                })
+                .catch(err => {
+                  Swal.fire({
+                    title: "An error occurred.",
+                    text: err,
+                    type: "error"
+                  });
+                });
+            }}
+            className="d-inline"
+            variant="success"
+          >
             Accept
           </Button>{" "}
-          <Button className="d-inline" variant="danger">
+          <Button
+            onClick={() => {
+              Swal.fire({
+                title: "Decline trade offer...",
+                showCancelButton: false,
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading();
+                }
+              });
+              GTS.methods
+                .declineTradeOffer(this.props.id)
+                .send({ from: this.state.sender })
+                .on("transactionHash", () => {
+                  Swal.fire({
+                    title: "Offer declined!",
+                    text:
+                      "However, Ethereum network may need some time to reflect the decline.",
+                    type: "success"
+                  });
+                })
+                .catch(err => {
+                  Swal.fire({
+                    title: "An error occurred.",
+                    text: err,
+                    type: "error"
+                  });
+                });
+            }}
+            className="d-inline"
+            variant="danger"
+          >
             Decline
           </Button>
         </span>
@@ -73,7 +136,39 @@ export default class OfferBox extends Component {
     } else {
       return (
         <div>
-          <Button variant="danger">Cancel</Button>
+          <Button
+            onClick={() => {
+              Swal.fire({
+                title: "Cancelling trade offer...",
+                showCancelButton: false,
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading();
+                }
+              });
+              GTS.methods
+                .cancelTradeOffer(this.props.id)
+                .send({ from: this.state.sender })
+                .on("transactionHash", () => {
+                  Swal.fire({
+                    title: "Offer cancelled!",
+                    text:
+                      "However, Ethereum network may need some time to reflect the cancellation.",
+                    type: "success"
+                  });
+                })
+                .catch(err => {
+                  Swal.fire({
+                    title: "An error occurred.",
+                    text: err,
+                    type: "error"
+                  });
+                });
+            }}
+            variant="danger"
+          >
+            Cancel
+          </Button>
         </div>
       );
     }
