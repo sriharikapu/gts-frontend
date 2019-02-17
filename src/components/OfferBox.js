@@ -32,7 +32,7 @@ export default class OfferBox extends Component {
     console.log(this.state);
     return (
       <div className="OfferBox">
-        {sender} {recipient}{" "}
+        {sender}{" "}
         {my_assets.map(i => (
           <ItemBox key={i} id={i} />
         ))}{" "}
