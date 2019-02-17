@@ -25,7 +25,7 @@ export default class OffersView extends Component {
   render() {
     return (
       <div className="OffersView">
-        <Container className="pt-2">
+        <Container className="mt-4">
           <div>
             <Button variant="primary" onClick={() => this.refresh()}>
               Refresh

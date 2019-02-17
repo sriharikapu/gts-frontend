@@ -58,7 +58,7 @@ export default class OffersView extends Component {
   render() {
     return (
       <div className="NewTradeView">
-        <Container className="mt-2">
+        <Container className="mt-4">
           <Row>
             <Col>
               {React.createElement(

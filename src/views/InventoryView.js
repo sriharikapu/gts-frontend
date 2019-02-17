@@ -25,7 +25,7 @@ export default class InventoryView extends Component {
   render() {
     return (
       <div className="InventoryView">
-        <Container className="pt-2">
+        <Container className="mt-4">
           <div>
             <Button type="success" onClick={() => this.refresh()}>
               Refresh
