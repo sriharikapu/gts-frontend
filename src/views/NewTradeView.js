@@ -151,14 +151,15 @@ export default class OffersView extends Component {
                     this.state.partnerSelected.length ===
                     0 || this.state.partnerAddress === ""
                 }
-                onClick={() => {
+                onClick={async () => {
+                  const account = (await window.web3.eth.getAccounts())[0];
                   GTS.methods
                     .sendTradeOffer(
                       this.state.partnerAddress,
                       this.state.mySelected,
                       this.state.partnerSelected
                     )
-                    .send();
+                    .send({ from: account });
                 }}
               >
                 Send
