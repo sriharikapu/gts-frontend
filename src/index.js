@@ -21,11 +21,15 @@ if (window.ethereum) {
   window.web3 = new Web3(fm.getProvider());
 }
 
-if (window.web3.currentProvider.enable)
-  window.web3.currentProvider.enable().then(alert);
-else if (window.ethereum.enable) window.ethereum.enable().then(console.log);
+if (window.ethereum) {
+  window.ethereum.enable().then(() => {
+    renderSite();
+  });
+} else {
+  web3.currentProvider.enable().then(renderSite);
+}
 
-if (window.web3) {
+function renderSite() {
   window.GTS = new web3.eth.Contract(contractAbi, contractAddress);
   ReactDOM.render(
     <BrowserRouter>

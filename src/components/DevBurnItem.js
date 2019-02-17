@@ -4,48 +4,38 @@ import { FormControl, Button } from "react-bootstrap";
 
 import Swal from "sweetalert2";
 
-export default class DevAssignItem extends Component {
+export default class DevBurnItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       address: null,
-      data: "",
-      recipient: ""
+      assetId: ""
     };
   }
   async componentDidMount() {
     this.setState({ address: (await web3.eth.getAccounts())[0] });
   }
   render() {
-    const { data, recipient } = this.state;
+    const { assetId } = this.state;
     return (
       <div className="DevAssignItem">
         <FormControl
           className="mt-2"
-          placeholder="address"
-          value={recipient}
-          onChange={e => this.setState({ recipient: e.target.value })}
+          placeholder="assetId"
+          name="assetId"
+          value={assetId}
+          onChange={e => this.setState({ assetId: e.target.value })}
         />
-        <FormControl
-          className="mt-2"
-          placeholder="data"
-          value={data}
-          onChange={e => this.setState({ data: e.target.value })}
-        />
-        <Button
-          name="assign"
-          className="mt-2"
-          onClick={async () => this.assign()}
-        >
-          Assign
+        <Button name="burn" className="mt-2" onClick={async () => this.burn()}>
+          Burn
         </Button>
       </div>
     );
   }
 
-  async assign() {
+  async burn() {
     Swal.fire({
-      title: "Emitting asset...",
+      title: "Burning asset...",
       showCancelButton: false,
       showConfirmButton: false,
       onBeforeOpen: () => {
@@ -53,19 +43,16 @@ export default class DevAssignItem extends Component {
       }
     });
 
-    const { address, data, recipient } = this.state;
+    const { address, assetId } = this.state;
 
-    const bytes = window.web3.utils.hexToBytes(
-      window.web3.utils.asciiToHex(data)
-    );
     const txReceipt = await GTS.methods
-      .assign(recipient, bytes)
+      .burn(assetId)
       .send({ from: address })
       .on("transactionHash", () => {
         Swal.fire({
-          title: "Asset emitted",
+          title: "Asset burnt",
           text:
-            "However, Ethereum network may need some time to reflect the acceptation.",
+            "However, Ethereum network may need some time to reflect new state.",
           type: "success"
         });
       })
