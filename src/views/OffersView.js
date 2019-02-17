@@ -17,7 +17,7 @@ export default class OffersView extends Component {
     const account = (await window.web3.eth.getAccounts())[0];
     this.setState({
       offers: await GTS.methods
-        .getMyOffers()
+        .getMyReceivedTradeOffers()
         .call({ from: account, gasLimit: 10000000 })
     });
   }
