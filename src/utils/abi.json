@@ -303,7 +303,7 @@
   {
     "constant": true,
     "inputs": [],
-    "name": "getMyOffers",
+    "name": "getMyReceivedTradeOffers",
     "outputs": [
       {
         "name": "",
@@ -313,7 +313,22 @@
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0x037852c7"
+    "signature": "0x1d0fcc98"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getMySentTradeOffers",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xfc23a54c"
   },
   {
     "constant": true,
