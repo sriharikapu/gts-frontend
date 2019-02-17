@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import NavProfile from ".//NavProfile";
 import NavbarDivider from "./NavbarDivider";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default class Header extends Component {
   constructor(props) {
@@ -24,13 +24,13 @@ export default class Header extends Component {
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="ml-auto" navbar>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link exact as={NavLink} to="/">
               Inventory
             </Nav.Link>
-            <Nav.Link as={Link} to="/offers">
+            <Nav.Link as={NavLink} to="/offers">
               Offers
             </Nav.Link>
-            <Nav.Link as={Link} to="/settings">
+            <Nav.Link as={NavLink} to="/settings">
               Settings
             </Nav.Link>
             <NavbarDivider show="sm" />

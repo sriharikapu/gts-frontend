@@ -1,172 +1,338 @@
 [
   {
-    "constant": true,
-    "inputs": [],
-    "name": "getMyOffers",
-    "outputs": [{ "name": "", "type": "uint256[]" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "emitter",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "data",
+        "type": "bytes32"
+      }
+    ],
+    "name": "AssetAssign",
+    "type": "event",
+    "signature": "0x8c44278d3e954f24f36e4ac6ea143c9e5d81039f09982cc48029db88e9d7c999"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "name": "AssetBurn",
+    "type": "event",
+    "signature": "0xc9df5636779f4b2aa9fbd4a41fffe4e900e59ceb626ed404190ff49b188848ca"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "to",
+        "type": "address"
+      }
+    ],
+    "name": "AssetMove",
+    "type": "event",
+    "signature": "0xd3823028b5319e3ee5a45cc847c9c6b651e07ed005b0970b0a6867c8b512a3e7"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "receiver",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "my_assets",
+        "type": "uint256[]"
+      },
+      {
+        "indexed": false,
+        "name": "their_assets",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "TradeOfferSend",
+    "type": "event",
+    "signature": "0x2900dea2461cb77561e97f0e7c8c8cd706f02ed0fdb949d8534c0934a4b0ef7e"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "state",
+        "type": "uint8"
+      }
+    ],
+    "name": "TradeOfferModify",
+    "type": "event",
+    "signature": "0x3bf7a1fcefd176de0ce24b86cf2783c9da086f8c622425396d32d295c6f5ee77"
   },
   {
     "constant": true,
-    "inputs": [],
-    "name": "getMyInventory",
-    "outputs": [{ "name": "", "type": "uint256[]" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [{ "name": "_id", "type": "uint256" }],
-    "name": "burn",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [{ "name": "user", "type": "address" }],
-    "name": "getUserInventory",
-    "outputs": [{ "name": "", "type": "uint256[]" }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [{ "name": "_id", "type": "uint256" }],
-    "name": "getTradeOffer",
+    "inputs": [
+      {
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getAsset",
     "outputs": [
-      { "name": "sender", "type": "address" },
-      { "name": "recipient", "type": "address" },
-      { "name": "my_assets_emitters", "type": "address[]" },
-      { "name": "my_assets_data", "type": "bytes32[]" },
-      { "name": "their_assets_emitters", "type": "address[]" },
-      { "name": "their_assets_data", "type": "bytes32[]" },
-      { "name": "state", "type": "uint8" }
+      {
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "name": "emitter",
+        "type": "address"
+      },
+      {
+        "name": "data",
+        "type": "bytes32"
+      }
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "signature": "0xeac8f5b8"
   },
   {
-    "constant": false,
-    "inputs": [{ "name": "offer_id", "type": "uint256" }],
-    "name": "cancelTradeOffer",
-    "outputs": [],
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getTradeOffer",
+    "outputs": [
+      {
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "name": "my_assets",
+        "type": "uint256[]"
+      },
+      {
+        "name": "their_assets",
+        "type": "uint256[]"
+      },
+      {
+        "name": "state",
+        "type": "uint8"
+      }
+    ],
     "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x673ac899"
   },
   {
     "constant": false,
     "inputs": [
-      { "name": "_owner", "type": "address" },
-      { "name": "_data", "type": "bytes32" }
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_data",
+        "type": "bytes32"
+      }
     ],
     "name": "assign",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0xc278b0a0"
   },
   {
     "constant": false,
     "inputs": [
-      { "name": "_partner", "type": "address" },
-      { "name": "_my_assets_emitters", "type": "address[]" },
-      { "name": "_my_assets_data", "type": "bytes32[]" },
-      { "name": "_their_assets_emitters", "type": "address[]" },
-      { "name": "_their_assets_data", "type": "bytes32[]" }
+      {
+        "name": "_id",
+        "type": "uint256"
+      }
     ],
-    "name": "sendTradeOffer",
-    "outputs": [{ "name": "", "type": "uint256" }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [{ "name": "_id", "type": "uint256" }],
-    "name": "getAsset",
-    "outputs": [
-      { "name": "owner", "type": "address" },
-      { "name": "emitter", "type": "address" },
-      { "name": "data", "type": "bytes32" }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      { "name": "_maker", "type": "uint256" },
-      { "name": "_maker_assets", "type": "uint256[]" },
-      { "name": "_taker", "type": "uint256" },
-      { "name": "_taker_assets", "type": "uint256[]" }
-    ],
-    "name": "takeTradeOffer",
+    "name": "burn",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x42966c68"
   },
   {
-    "anonymous": false,
+    "constant": false,
     "inputs": [
-      { "indexed": false, "name": "id", "type": "uint256" },
-      { "indexed": false, "name": "owner", "type": "address" },
-      { "indexed": false, "name": "emitter", "type": "address" },
-      { "indexed": false, "name": "data", "type": "bytes32" }
-    ],
-    "name": "AssetAssign",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [{ "indexed": false, "name": "id", "type": "uint256" }],
-    "name": "AssetBurn",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": false, "name": "id", "type": "uint256" },
-      { "indexed": false, "name": "from", "type": "address" },
-      { "indexed": false, "name": "to", "type": "address" }
-    ],
-    "name": "AssetMove",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": false, "name": "id", "type": "uint256" },
-      { "indexed": true, "name": "sender", "type": "address" },
-      { "indexed": true, "name": "receiver", "type": "address" },
-      { "indexed": false, "name": "my_assets_emitters", "type": "address[]" },
-      { "indexed": false, "name": "my_assets_data", "type": "bytes32[]" },
       {
-        "indexed": false,
-        "name": "their_assets_emitters",
-        "type": "address[]"
+        "name": "_partner",
+        "type": "address"
       },
-      { "indexed": false, "name": "their_assets_data", "type": "bytes32[]" }
+      {
+        "name": "_my_assets",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_their_assets",
+        "type": "uint256[]"
+      }
     ],
-    "name": "TradeOfferSend",
-    "type": "event"
+    "name": "sendTradeOffer",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x24e21cde"
   },
   {
-    "anonymous": false,
+    "constant": false,
     "inputs": [
-      { "indexed": true, "name": "id", "type": "uint256" },
-      { "indexed": false, "name": "state", "type": "uint8" }
+      {
+        "name": "offer_id",
+        "type": "uint256"
+      }
     ],
-    "name": "TradeOfferModify",
-    "type": "event"
+    "name": "cancelTradeOffer",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xaa2b2bd9"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_offer_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "acceptTradeOffer",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x5d5b9021"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_offer_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "declineTradeOffer",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x4806a0bd"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getMyInventory",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x27457b3b"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getMyOffers",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x037852c7"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "getUserInventory",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x5714cc8e"
   }
 ]

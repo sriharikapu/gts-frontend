@@ -23,7 +23,8 @@ export default class OffersView extends Component {
       newPartnerAddress: this.props.match.params.address
         ? this.props.match.params.address
         : "",
-      selected: []
+      mySelected: [],
+      partnerSelected: []
     };
   }
   async componentWillMount() {
@@ -138,6 +139,30 @@ export default class OffersView extends Component {
                   selected={this.state.partnerSelected}
                 />
               </div>
+            </Col>
+          </Row>
+          <Row style={{ textAlign: "right" }}>
+            <Col>
+              <Button
+                variant="success"
+                className="mt-2"
+                disabled={
+                  this.state.mySelected.length +
+                    this.state.partnerSelected.length ===
+                    0 || this.state.partnerAddress === ""
+                }
+                onClick={() => {
+                  GTS.methods
+                    .sendTradeOffer(
+                      this.state.partnerAddress,
+                      this.state.mySelected,
+                      this.state.partnerSelected
+                    )
+                    .send();
+                }}
+              >
+                Send
+              </Button>
             </Col>
           </Row>
         </Container>
