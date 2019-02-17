@@ -20,12 +20,12 @@
       {
         "indexed": false,
         "name": "data",
-        "type": "bytes32"
+        "type": "bytes"
       }
     ],
     "name": "AssetAssign",
     "type": "event",
-    "signature": "0x8c44278d3e954f24f36e4ac6ea143c9e5d81039f09982cc48029db88e9d7c999"
+    "signature": "0x730b2057648715ab8a295252b8a0d83170f78bb4219846a9ded361f64395a121"
   },
   {
     "anonymous": false,
@@ -134,7 +134,7 @@
       },
       {
         "name": "data",
-        "type": "bytes32"
+        "type": "bytes"
       }
     ],
     "payable": false,
@@ -187,7 +187,7 @@
       },
       {
         "name": "_data",
-        "type": "bytes32"
+        "type": "bytes"
       }
     ],
     "name": "assign",
@@ -195,7 +195,7 @@
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0xc278b0a0"
+    "signature": "0x94866497"
   },
   {
     "constant": false,
