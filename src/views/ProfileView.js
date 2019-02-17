@@ -18,7 +18,7 @@ export default class ProfileView extends Component {
     if (!this.state.address) return <div className="ProfileView" />;
     return (
       <div className="ProfileView">
-        <Container className="mt-2">
+        <Container className="mt-4">
           <Form.Group>
             <Form.Label>User ID</Form.Label>
             <InputGroup className="mb-3">
